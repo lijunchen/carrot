@@ -1,0 +1,126 @@
+File {
+    items: [
+        Enum(
+            Enum {
+                name: "ListInt",
+                generics: [],
+                variants: [
+                    Variant {
+                        name: "Nil",
+                        args: [],
+                    },
+                    Variant {
+                        name: "Cons",
+                        args: [
+                            Name {
+                                name: "Int",
+                            },
+                            Name {
+                                name: "ListInt",
+                            },
+                        ],
+                    },
+                    Variant {
+                        name: "C",
+                        args: [
+                            Name {
+                                name: "Bool",
+                            },
+                            Name {
+                                name: "Int",
+                            },
+                            Name {
+                                name: "String",
+                            },
+                        ],
+                    },
+                ],
+            },
+        ),
+        Fn(
+            Fn {
+                name: "main0",
+                generics: [],
+                params: [],
+                ret_ty: Name {
+                    name: "Unit",
+                },
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                            },
+                            ty: Missing,
+                            value: VCon {
+                                name: "Nil",
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "b",
+                            },
+                            ty: Missing,
+                            value: Call {
+                                f: VCon {
+                                    name: "Cons",
+                                },
+                                args: [
+                                    Literal {
+                                        value: Int(
+                                            1,
+                                        ),
+                                    },
+                                    VCon {
+                                        name: "Nil",
+                                    },
+                                ],
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "c",
+                            },
+                            ty: Missing,
+                            value: Call {
+                                f: VCon {
+                                    name: "Cons",
+                                },
+                                args: [
+                                    Literal {
+                                        value: Int(
+                                            1,
+                                        ),
+                                    },
+                                    Call {
+                                        f: VCon {
+                                            name: "C",
+                                        },
+                                        args: [
+                                            Literal {
+                                                value: Bool(
+                                                    true,
+                                                ),
+                                            },
+                                            Literal {
+                                                value: Int(
+                                                    1,
+                                                ),
+                                            },
+                                            Literal {
+                                                value: String(
+                                                    "\"hello\"",
+                                                ),
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                    expr: None,
+                },
+            },
+        ),
+    ],
+}

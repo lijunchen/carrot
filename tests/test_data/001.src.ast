@@ -1,0 +1,64 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "id",
+                generics: [
+                    "T",
+                ],
+                params: [
+                    Param {
+                        name: "x",
+                        ty: Name {
+                            name: "T",
+                        },
+                    },
+                ],
+                ret_ty: Name {
+                    name: "T",
+                },
+                body: Block {
+                    stmts: [],
+                    expr: Some(
+                        Name {
+                            name: "x",
+                        },
+                    ),
+                },
+            },
+        ),
+        Fn(
+            Fn {
+                name: "main",
+                generics: [],
+                params: [],
+                ret_ty: Name {
+                    name: "Unit",
+                },
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "x",
+                            },
+                            ty: Missing,
+                            value: Call {
+                                f: Name {
+                                    name: "id",
+                                },
+                                args: [
+                                    Literal {
+                                        value: Int(
+                                            1,
+                                        ),
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                    expr: None,
+                },
+            },
+        ),
+    ],
+}

@@ -1,0 +1,94 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "main0",
+                generics: [],
+                params: [],
+                ret_ty: Unit,
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                                ty: ListInt,
+                            },
+                            ty: ListInt,
+                            value: VCon {
+                                name: "Nil",
+                                ty: ListInt,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "b",
+                                ty: ListInt,
+                            },
+                            ty: ListInt,
+                            value: Call {
+                                callee: VCon {
+                                    name: "Cons",
+                                    ty: (Int, ListInt) -> ListInt,
+                                },
+                                args: [
+                                    Literal {
+                                        value: 1,
+                                        ty: Int,
+                                    },
+                                    VCon {
+                                        name: "Nil",
+                                        ty: ListInt,
+                                    },
+                                ],
+                                ty: ListInt,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "c",
+                                ty: ListInt,
+                            },
+                            ty: ListInt,
+                            value: Call {
+                                callee: VCon {
+                                    name: "Cons",
+                                    ty: (Int, ListInt) -> ListInt,
+                                },
+                                args: [
+                                    Literal {
+                                        value: 1,
+                                        ty: Int,
+                                    },
+                                    Call {
+                                        callee: VCon {
+                                            name: "C",
+                                            ty: (Bool, Int, String) -> ListInt,
+                                        },
+                                        args: [
+                                            Literal {
+                                                value: true,
+                                                ty: Bool,
+                                            },
+                                            Literal {
+                                                value: 1,
+                                                ty: Int,
+                                            },
+                                            Literal {
+                                                value: "\"hello\"",
+                                                ty: String,
+                                            },
+                                        ],
+                                        ty: ListInt,
+                                    },
+                                ],
+                                ty: ListInt,
+                            },
+                        },
+                    ],
+                    expr: None,
+                    ty: Unit,
+                },
+            },
+        ),
+    ],
+}

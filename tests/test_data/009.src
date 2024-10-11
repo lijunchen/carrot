@@ -1,0 +1,7 @@
+// comment
+fn main() -> Unit {
+    // emmm
+    let x = ();
+    x
+}
+/////

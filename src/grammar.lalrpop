@@ -1,0 +1,201 @@
+use std::str::FromStr;
+use crate::ast::{Expr, Literal, Pattern, Stmt, Type, Fn, Param, Item, Enum, Variant, File};
+
+grammar;
+
+match {
+    "fn",
+    "match",
+    "if",
+    "else",
+    "enum",
+    "let",
+    "(",
+    ")",
+    "[",
+    "]",
+    "{",
+    "}",
+    "->",
+    "=>",
+    ":",
+    ";",
+    ",",
+    "=",
+    "true",
+    "false",
+    "_",
+    r"-?[0-9]+",
+    r"[a-z_][a-zA-Z0-9_]*",
+    r"[A-Z][a-zA-Z0-9_]*",
+    r#""[^\"]*""#,
+    r"\s*" => { },
+    r"//[^\n\r]*[\n\r]*" => { },
+}
+
+pub File: File = {
+    <items:Item*> => File { items },
+};
+
+pub Item: Item = {
+    <item:Fn> => Item::Fn(item),
+    <item:Enum> => Item::Enum(item),
+}
+
+pub Fn: Fn = {
+    "fn" <name:Lident> <generics:Generics?> "(" <params:ParamList> ")" "->" <ty:Type> <body:Expr> => Fn {
+        name,
+        generics: generics.unwrap_or(vec![]),
+        params,
+        ret_ty: ty,
+        body: Box::new(body),
+    },
+}
+
+Generics: Vec<String> = {
+    "[" <generics:Comma<Uident>> "]" => generics,
+};
+
+ParamList: Vec<Param> = {
+    <params:Comma<Param>> => params,
+};
+
+pub Enum: Enum = {
+    "enum" <name:Uident> <generics:Generics?> "{" <variants:Comma<Variant>> "}" => Enum {
+        name,
+        generics: generics.unwrap_or(vec![]),
+        variants,
+    },
+}
+
+Variant: Variant = {
+    <name:Uident> => Variant { name, args: vec![] },
+    <name:Uident> "(" <args:Comma<Type>> ")" => {
+        Variant { name, args }
+    }
+}
+
+Param: Param = {
+    <name:Lident> ":" <ty:Type> => Param { name, ty },
+};
+
+pub Stmt: Stmt = {
+    <s:LetStmt> => s,
+    <expr:Expr> => Stmt::ExprStmt { expr },
+}
+
+LetStmt: Stmt = {
+    "let" <pat:Pattern> <ty:OptType> "=" <value:Expr> => Stmt::LetStmt {
+        pat,
+        ty,
+        value,
+    },
+}
+
+OptType: Type = {
+    ":" <ty:Type> => ty,
+    => Type::Missing,
+};
+
+pub Expr: Expr = {
+    <l:Literal> => Expr::Literal { value: l },
+    <name:Lident> => Expr::Name { name },
+    <name:Uident> => Expr::VCon { name },
+    "(" <items:Comma<Expr>> ")" => {
+        if items.is_empty() {
+            Expr::Unit
+        } else {
+            Expr::Tuple { items }
+        }
+    },
+    "{" <stmts:(<Stmt> ";")*> <expr:Expr?> "}" => {
+        Expr::Block { stmts, expr: expr.map(Box::new) }
+    },
+    <f:Expr> "(" <args:Comma<Expr>> ")" => Expr::Call {
+        f: Box::new(f),
+        args,
+    },
+    "if" <cond:Expr> "{" <then:Expr> "}" <orelse:OrElse> => Expr::If {
+        cond: Box::new(cond),
+        then: Box::new(then),
+        orelse: Box::new(orelse),
+    },
+    "match" <expr:Expr> "{" <arms:Comma<MatchArm>> "}" => Expr::Match {
+        expr: Box::new(expr),
+        arms,
+    },
+};
+
+OrElse: Expr = {
+    "else" "{" <orelse:Expr> "}" => orelse
+}
+
+MatchArm: (Pattern, Expr) = {
+    <pat:Pattern> "=>" <expr:Expr> => (pat, expr),
+};
+
+pub Literal: Literal = {
+    <i:Num> => Literal::Int(i),
+    "true" => Literal::Bool(true),
+    "false" => Literal::Bool(false),
+    <s:StringLiteral> => Literal::String(s),
+};
+
+StringLiteral: String = {
+    <s:(r#""[^\"]*""#)> => s.to_string(),
+};
+
+Num: i32 = {
+    r"-?[0-9]+" => i32::from_str(<>).unwrap(),
+};
+
+Lident: String = {
+    r"[a-z_][a-zA-Z0-9_]*" => <>.to_string(),
+}
+
+Uident: String = {
+    r"[A-Z][a-zA-Z0-9_]*" => <>.to_string(),
+}
+
+pub Pattern: Pattern = {
+    <pat:Literal> => Pattern::Literal {pat},
+    <name:Lident> => Pattern::Ident { name },
+    <name:Uident> => Pattern::Constructor { name, args: vec![] },
+    <name:Uident> "(" <args:Comma<Pattern>> ")" => Pattern::Constructor { name, args },
+    "(" <pats:Comma<Pattern>> ")" => Pattern::Tuple { pats },
+    "_" => Pattern::Wild,
+};
+
+pub Type: Type = {
+    #[precedence(level="0")]
+    <name:Uident> => Type::Name { name },
+
+    <name:Uident> <args:TypeInstArgs> => Type::Inst { name, args },
+
+    "(" <items:Comma<Type>> ")" => {
+        Type::Tuple { items }
+    },
+
+    #[precedence(level="1")] #[assoc(side="left")]
+    <l:Type> "->" <r:Type> => Type::Arrow {
+        left: Box::new(l),
+        right: Box::new(r),
+    },
+};
+
+TypeInstArgs: Vec<Type> = {
+    "[" <args:Comma<Type>> "]" => {
+        args
+    },
+};
+
+
+Comma<T>: Vec<T> = {
+    <mut v:(<T> ",")*> <e:T?> => match e {
+        None=> v,
+        Some(e) => {
+            v.push(e);
+            v
+        }
+    }
+};

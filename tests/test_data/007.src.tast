@@ -1,0 +1,102 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "main",
+                generics: [],
+                params: [],
+                ret_ty: Unit,
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "leaf2",
+                                ty: Tree[Int],
+                            },
+                            ty: Tree[Int],
+                            value: Call {
+                                callee: VCon {
+                                    name: "Node",
+                                    ty: (Tree[Int], Int, Tree[Int]) -> Tree[Int],
+                                },
+                                args: [
+                                    VCon {
+                                        name: "Empty",
+                                        ty: Tree[Int],
+                                    },
+                                    Literal {
+                                        value: 2,
+                                        ty: Int,
+                                    },
+                                    VCon {
+                                        name: "Empty",
+                                        ty: Tree[Int],
+                                    },
+                                ],
+                                ty: Tree[Int],
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "leaf3",
+                                ty: Tree[Int],
+                            },
+                            ty: Tree[Int],
+                            value: Call {
+                                callee: VCon {
+                                    name: "Node",
+                                    ty: (Tree[Int], Int, Tree[Int]) -> Tree[Int],
+                                },
+                                args: [
+                                    VCon {
+                                        name: "Empty",
+                                        ty: Tree[Int],
+                                    },
+                                    Literal {
+                                        value: 3,
+                                        ty: Int,
+                                    },
+                                    VCon {
+                                        name: "Empty",
+                                        ty: Tree[Int],
+                                    },
+                                ],
+                                ty: Tree[Int],
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "root1",
+                                ty: Tree[Int],
+                            },
+                            ty: Tree[Int],
+                            value: Call {
+                                callee: VCon {
+                                    name: "Node",
+                                    ty: (Tree[Int], Int, Tree[Int]) -> Tree[Int],
+                                },
+                                args: [
+                                    Name {
+                                        name: "leaf2",
+                                        ty: Tree[Int],
+                                    },
+                                    Literal {
+                                        value: 1,
+                                        ty: Int,
+                                    },
+                                    Name {
+                                        name: "leaf3",
+                                        ty: Tree[Int],
+                                    },
+                                ],
+                                ty: Tree[Int],
+                            },
+                        },
+                    ],
+                    expr: None,
+                    ty: Unit,
+                },
+            },
+        ),
+    ],
+}

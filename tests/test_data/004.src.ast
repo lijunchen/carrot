@@ -1,0 +1,163 @@
+File {
+    items: [
+        Enum(
+            Enum {
+                name: "T",
+                generics: [],
+                variants: [
+                    Variant {
+                        name: "A",
+                        args: [],
+                    },
+                    Variant {
+                        name: "B",
+                        args: [
+                            Name {
+                                name: "Int",
+                            },
+                        ],
+                    },
+                    Variant {
+                        name: "C",
+                        args: [
+                            Name {
+                                name: "Int",
+                            },
+                            Name {
+                                name: "Bool",
+                            },
+                        ],
+                    },
+                    Variant {
+                        name: "D",
+                        args: [
+                            Tuple {
+                                items: [
+                                    Name {
+                                        name: "Int",
+                                    },
+                                    Name {
+                                        name: "Bool",
+                                    },
+                                ],
+                            },
+                            Name {
+                                name: "String",
+                            },
+                        ],
+                    },
+                ],
+            },
+        ),
+        Fn(
+            Fn {
+                name: "main0",
+                generics: [],
+                params: [],
+                ret_ty: Name {
+                    name: "Unit",
+                },
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "t",
+                            },
+                            ty: Missing,
+                            value: Call {
+                                f: VCon {
+                                    name: "B",
+                                },
+                                args: [
+                                    Literal {
+                                        value: Int(
+                                            1,
+                                        ),
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                    expr: Some(
+                        Match {
+                            expr: Name {
+                                name: "t",
+                            },
+                            arms: [
+                                (
+                                    Constructor {
+                                        name: "A",
+                                        args: [],
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            0,
+                                        ),
+                                    },
+                                ),
+                                (
+                                    Constructor {
+                                        name: "B",
+                                        args: [
+                                            Ident {
+                                                name: "x",
+                                            },
+                                        ],
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            1,
+                                        ),
+                                    },
+                                ),
+                                (
+                                    Constructor {
+                                        name: "C",
+                                        args: [
+                                            Ident {
+                                                name: "x",
+                                            },
+                                            Ident {
+                                                name: "y",
+                                            },
+                                        ],
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            2,
+                                        ),
+                                    },
+                                ),
+                                (
+                                    Constructor {
+                                        name: "D",
+                                        args: [
+                                            Tuple {
+                                                pats: [
+                                                    Ident {
+                                                        name: "x",
+                                                    },
+                                                    Ident {
+                                                        name: "y",
+                                                    },
+                                                ],
+                                            },
+                                            Ident {
+                                                name: "z",
+                                            },
+                                        ],
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            3,
+                                        ),
+                                    },
+                                ),
+                            ],
+                        },
+                    ),
+                },
+            },
+        ),
+    ],
+}

@@ -1,0 +1,11 @@
+enum ListInt {
+    Nil,
+    Cons(Int, ListInt),
+    C(Bool, Int, String),
+}
+
+fn main0() -> Unit {
+    let a = Nil;
+    let b = Cons(1, Nil);
+    let c = Cons(1, C(true, 1, "hello"));
+}

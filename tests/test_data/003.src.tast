@@ -1,0 +1,152 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "main0",
+                generics: [],
+                params: [],
+                ret_ty: Unit,
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                                ty: Option[Int],
+                            },
+                            ty: Option[Int],
+                            value: Call {
+                                callee: VCon {
+                                    name: "Some",
+                                    ty: (Int) -> Option[Int],
+                                },
+                                args: [
+                                    Literal {
+                                        value: 1,
+                                        ty: Int,
+                                    },
+                                ],
+                                ty: Option[Int],
+                            },
+                        },
+                        ExprStmt {
+                            expr: Match {
+                                expr: Name {
+                                    name: "a",
+                                    ty: Option[Int],
+                                },
+                                arms: [
+                                    (
+                                        Constructor {
+                                            name: "None",
+                                            args: [],
+                                            ty: Option[Int],
+                                        },
+                                        Block {
+                                            stmts: [
+                                                ExprStmt {
+                                                    expr: Call {
+                                                        callee: Name {
+                                                            name: "print",
+                                                            ty: (String) -> Unit,
+                                                        },
+                                                        args: [
+                                                            Literal {
+                                                                value: "\"None\"",
+                                                                ty: String,
+                                                            },
+                                                        ],
+                                                        ty: Unit,
+                                                    },
+                                                },
+                                            ],
+                                            expr: None,
+                                            ty: Unit,
+                                        },
+                                    ),
+                                    (
+                                        Constructor {
+                                            name: "Some",
+                                            args: [
+                                                Ident {
+                                                    name: "x",
+                                                    ty: Int,
+                                                },
+                                            ],
+                                            ty: Option[Int],
+                                        },
+                                        Block {
+                                            stmts: [
+                                                ExprStmt {
+                                                    expr: Call {
+                                                        callee: Name {
+                                                            name: "print",
+                                                            ty: (Int) -> Unit,
+                                                        },
+                                                        args: [
+                                                            Name {
+                                                                name: "x",
+                                                                ty: Int,
+                                                            },
+                                                        ],
+                                                        ty: Unit,
+                                                    },
+                                                },
+                                            ],
+                                            expr: None,
+                                            ty: Unit,
+                                        },
+                                    ),
+                                ],
+                                ty: Unit,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "x",
+                                ty: Int,
+                            },
+                            ty: Int,
+                            value: Literal {
+                                value: 1,
+                                ty: Int,
+                            },
+                        },
+                        ExprStmt {
+                            expr: Match {
+                                expr: Name {
+                                    name: "x",
+                                    ty: Int,
+                                },
+                                arms: [
+                                    (
+                                        Literal {
+                                            pat: 0,
+                                            ty: Int,
+                                        },
+                                        Literal {
+                                            value: "\"1\"",
+                                            ty: String,
+                                        },
+                                    ),
+                                    (
+                                        Literal {
+                                            pat: 1,
+                                            ty: Int,
+                                        },
+                                        Literal {
+                                            value: "\"2\"",
+                                            ty: String,
+                                        },
+                                    ),
+                                ],
+                                ty: String,
+                            },
+                        },
+                    ],
+                    expr: None,
+                    ty: Unit,
+                },
+            },
+        ),
+    ],
+}

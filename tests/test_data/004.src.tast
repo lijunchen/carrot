@@ -1,0 +1,124 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "main0",
+                generics: [],
+                params: [],
+                ret_ty: Unit,
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "t",
+                                ty: T,
+                            },
+                            ty: T,
+                            value: Call {
+                                callee: VCon {
+                                    name: "B",
+                                    ty: (Int) -> T,
+                                },
+                                args: [
+                                    Literal {
+                                        value: 1,
+                                        ty: Int,
+                                    },
+                                ],
+                                ty: T,
+                            },
+                        },
+                    ],
+                    expr: Some(
+                        Match {
+                            expr: Name {
+                                name: "t",
+                                ty: T,
+                            },
+                            arms: [
+                                (
+                                    Constructor {
+                                        name: "A",
+                                        args: [],
+                                        ty: T,
+                                    },
+                                    Literal {
+                                        value: 0,
+                                        ty: Int,
+                                    },
+                                ),
+                                (
+                                    Constructor {
+                                        name: "B",
+                                        args: [
+                                            Ident {
+                                                name: "x",
+                                                ty: Int,
+                                            },
+                                        ],
+                                        ty: T,
+                                    },
+                                    Literal {
+                                        value: 1,
+                                        ty: Int,
+                                    },
+                                ),
+                                (
+                                    Constructor {
+                                        name: "C",
+                                        args: [
+                                            Ident {
+                                                name: "x",
+                                                ty: Int,
+                                            },
+                                            Ident {
+                                                name: "y",
+                                                ty: Bool,
+                                            },
+                                        ],
+                                        ty: T,
+                                    },
+                                    Literal {
+                                        value: 2,
+                                        ty: Int,
+                                    },
+                                ),
+                                (
+                                    Constructor {
+                                        name: "D",
+                                        args: [
+                                            Tuple {
+                                                pats: [
+                                                    Ident {
+                                                        name: "x",
+                                                        ty: Int,
+                                                    },
+                                                    Ident {
+                                                        name: "y",
+                                                        ty: Bool,
+                                                    },
+                                                ],
+                                                ty: tuple(Int, Bool),
+                                            },
+                                            Ident {
+                                                name: "z",
+                                                ty: String,
+                                            },
+                                        ],
+                                        ty: T,
+                                    },
+                                    Literal {
+                                        value: 3,
+                                        ty: Int,
+                                    },
+                                ),
+                            ],
+                            ty: Int,
+                        },
+                    ),
+                    ty: Int,
+                },
+            },
+        ),
+    ],
+}

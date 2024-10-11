@@ -1,0 +1,170 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "main",
+                generics: [],
+                params: [],
+                ret_ty: Unit,
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "tp",
+                                ty: tuple(tuple(Int, Int), Int),
+                            },
+                            ty: tuple(tuple(Int, Int), Int),
+                            value: Tuple {
+                                exprs: [
+                                    Tuple {
+                                        exprs: [
+                                            Literal {
+                                                value: 0,
+                                                ty: Int,
+                                            },
+                                            Literal {
+                                                value: 0,
+                                                ty: Int,
+                                            },
+                                        ],
+                                        ty: tuple(Int, Int),
+                                    },
+                                    Literal {
+                                        value: 0,
+                                        ty: Int,
+                                    },
+                                ],
+                                ty: tuple(tuple(Int, Int), Int),
+                            },
+                        },
+                    ],
+                    expr: Some(
+                        Match {
+                            expr: Name {
+                                name: "tp",
+                                ty: tuple(tuple(Int, Int), Int),
+                            },
+                            arms: [
+                                (
+                                    Tuple {
+                                        pats: [
+                                            Tuple {
+                                                pats: [
+                                                    Literal {
+                                                        pat: 0,
+                                                        ty: Int,
+                                                    },
+                                                    Literal {
+                                                        pat: 0,
+                                                        ty: Int,
+                                                    },
+                                                ],
+                                                ty: tuple(Int, Int),
+                                            },
+                                            Literal {
+                                                pat: 0,
+                                                ty: Int,
+                                            },
+                                        ],
+                                        ty: tuple(tuple(Int, Int), Int),
+                                    },
+                                    Literal {
+                                        value: 0,
+                                        ty: Int,
+                                    },
+                                ),
+                                (
+                                    Tuple {
+                                        pats: [
+                                            Tuple {
+                                                pats: [
+                                                    Literal {
+                                                        pat: 0,
+                                                        ty: Int,
+                                                    },
+                                                    Literal {
+                                                        pat: 1,
+                                                        ty: Int,
+                                                    },
+                                                ],
+                                                ty: tuple(Int, Int),
+                                            },
+                                            Literal {
+                                                pat: 1,
+                                                ty: Int,
+                                            },
+                                        ],
+                                        ty: tuple(tuple(Int, Int), Int),
+                                    },
+                                    Literal {
+                                        value: 1,
+                                        ty: Int,
+                                    },
+                                ),
+                                (
+                                    Tuple {
+                                        pats: [
+                                            Tuple {
+                                                pats: [
+                                                    Ident {
+                                                        name: "a",
+                                                        ty: Int,
+                                                    },
+                                                    Ident {
+                                                        name: "b",
+                                                        ty: Int,
+                                                    },
+                                                ],
+                                                ty: tuple(Int, Int),
+                                            },
+                                            Ident {
+                                                name: "c",
+                                                ty: Int,
+                                            },
+                                        ],
+                                        ty: tuple(tuple(Int, Int), Int),
+                                    },
+                                    Literal {
+                                        value: 2,
+                                        ty: Int,
+                                    },
+                                ),
+                                (
+                                    Tuple {
+                                        pats: [
+                                            Ident {
+                                                name: "d",
+                                                ty: tuple(Int, Int),
+                                            },
+                                            Ident {
+                                                name: "e",
+                                                ty: Int,
+                                            },
+                                        ],
+                                        ty: tuple(tuple(Int, Int), Int),
+                                    },
+                                    Literal {
+                                        value: 3,
+                                        ty: Int,
+                                    },
+                                ),
+                                (
+                                    Ident {
+                                        name: "x",
+                                        ty: tuple(tuple(Int, Int), Int),
+                                    },
+                                    Literal {
+                                        value: 4,
+                                        ty: Int,
+                                    },
+                                ),
+                            ],
+                            ty: Int,
+                        },
+                    ),
+                    ty: Int,
+                },
+            },
+        ),
+    ],
+}

@@ -1,0 +1,10 @@
+enum Tree[T] {
+    Empty,
+    Node(Tree[T], T, Tree[T]),
+}
+
+fn main() -> Unit {
+    let leaf2 = Node(Empty, 2, Empty);
+    let leaf3 = Node(Empty, 3, Empty);
+    let root1 = Node(leaf2, 1, leaf3);
+}

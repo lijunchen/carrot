@@ -1,0 +1,167 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "main",
+                generics: [],
+                params: [],
+                ret_ty: Name {
+                    name: "Unit",
+                },
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "tp",
+                            },
+                            ty: Missing,
+                            value: Tuple {
+                                items: [
+                                    Tuple {
+                                        items: [
+                                            Literal {
+                                                value: Int(
+                                                    0,
+                                                ),
+                                            },
+                                            Literal {
+                                                value: Int(
+                                                    0,
+                                                ),
+                                            },
+                                        ],
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            0,
+                                        ),
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                    expr: Some(
+                        Match {
+                            expr: Name {
+                                name: "tp",
+                            },
+                            arms: [
+                                (
+                                    Tuple {
+                                        pats: [
+                                            Tuple {
+                                                pats: [
+                                                    Literal {
+                                                        pat: Int(
+                                                            0,
+                                                        ),
+                                                    },
+                                                    Literal {
+                                                        pat: Int(
+                                                            0,
+                                                        ),
+                                                    },
+                                                ],
+                                            },
+                                            Literal {
+                                                pat: Int(
+                                                    0,
+                                                ),
+                                            },
+                                        ],
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            0,
+                                        ),
+                                    },
+                                ),
+                                (
+                                    Tuple {
+                                        pats: [
+                                            Tuple {
+                                                pats: [
+                                                    Literal {
+                                                        pat: Int(
+                                                            0,
+                                                        ),
+                                                    },
+                                                    Literal {
+                                                        pat: Int(
+                                                            1,
+                                                        ),
+                                                    },
+                                                ],
+                                            },
+                                            Literal {
+                                                pat: Int(
+                                                    1,
+                                                ),
+                                            },
+                                        ],
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            1,
+                                        ),
+                                    },
+                                ),
+                                (
+                                    Tuple {
+                                        pats: [
+                                            Tuple {
+                                                pats: [
+                                                    Ident {
+                                                        name: "a",
+                                                    },
+                                                    Ident {
+                                                        name: "b",
+                                                    },
+                                                ],
+                                            },
+                                            Ident {
+                                                name: "c",
+                                            },
+                                        ],
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            2,
+                                        ),
+                                    },
+                                ),
+                                (
+                                    Tuple {
+                                        pats: [
+                                            Ident {
+                                                name: "d",
+                                            },
+                                            Ident {
+                                                name: "e",
+                                            },
+                                        ],
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            3,
+                                        ),
+                                    },
+                                ),
+                                (
+                                    Ident {
+                                        name: "x",
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            4,
+                                        ),
+                                    },
+                                ),
+                            ],
+                        },
+                    ),
+                },
+            },
+        ),
+    ],
+}

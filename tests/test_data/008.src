@@ -1,0 +1,20 @@
+enum Color {
+    Red,
+    Green,
+    Blue,
+}
+
+fn next(c: Color) -> Color {
+    match c {
+        Red => Green,
+        Green => Blue,
+        Blue => Red,
+    }
+}
+
+fn main0() -> Unit {
+    let a = Red;
+    let b = Green;
+    let next_a = next(a);
+    let next_b = next(b);
+}

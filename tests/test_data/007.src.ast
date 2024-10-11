@@ -1,0 +1,129 @@
+File {
+    items: [
+        Enum(
+            Enum {
+                name: "Tree",
+                generics: [
+                    "T",
+                ],
+                variants: [
+                    Variant {
+                        name: "Empty",
+                        args: [],
+                    },
+                    Variant {
+                        name: "Node",
+                        args: [
+                            Inst {
+                                name: "Tree",
+                                args: [
+                                    Name {
+                                        name: "T",
+                                    },
+                                ],
+                            },
+                            Name {
+                                name: "T",
+                            },
+                            Inst {
+                                name: "Tree",
+                                args: [
+                                    Name {
+                                        name: "T",
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+        ),
+        Fn(
+            Fn {
+                name: "main",
+                generics: [],
+                params: [],
+                ret_ty: Name {
+                    name: "Unit",
+                },
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "leaf2",
+                            },
+                            ty: Missing,
+                            value: Call {
+                                f: VCon {
+                                    name: "Node",
+                                },
+                                args: [
+                                    VCon {
+                                        name: "Empty",
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            2,
+                                        ),
+                                    },
+                                    VCon {
+                                        name: "Empty",
+                                    },
+                                ],
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "leaf3",
+                            },
+                            ty: Missing,
+                            value: Call {
+                                f: VCon {
+                                    name: "Node",
+                                },
+                                args: [
+                                    VCon {
+                                        name: "Empty",
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            3,
+                                        ),
+                                    },
+                                    VCon {
+                                        name: "Empty",
+                                    },
+                                ],
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "root1",
+                            },
+                            ty: Missing,
+                            value: Call {
+                                f: VCon {
+                                    name: "Node",
+                                },
+                                args: [
+                                    Name {
+                                        name: "leaf2",
+                                    },
+                                    Literal {
+                                        value: Int(
+                                            1,
+                                        ),
+                                    },
+                                    Name {
+                                        name: "leaf3",
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                    expr: None,
+                },
+            },
+        ),
+    ],
+}

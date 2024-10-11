@@ -1,0 +1,53 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "main0",
+                generics: [],
+                params: [],
+                ret_ty: Name {
+                    name: "Unit",
+                },
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                            },
+                            ty: Missing,
+                            value: Tuple {
+                                items: [
+                                    Literal {
+                                        value: Int(
+                                            1,
+                                        ),
+                                    },
+                                    Literal {
+                                        value: Bool(
+                                            true,
+                                        ),
+                                    },
+                                    Tuple {
+                                        items: [
+                                            Literal {
+                                                value: Int(
+                                                    2,
+                                                ),
+                                            },
+                                            Literal {
+                                                value: Bool(
+                                                    false,
+                                                ),
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                    expr: None,
+                },
+            },
+        ),
+    ],
+}

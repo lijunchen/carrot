@@ -1,0 +1,141 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "next",
+                generics: [],
+                params: [
+                    Param {
+                        name: "c",
+                        ty: Color,
+                    },
+                ],
+                ret_ty: Color,
+                body: Block {
+                    stmts: [],
+                    expr: Some(
+                        Match {
+                            expr: Name {
+                                name: "c",
+                                ty: Color,
+                            },
+                            arms: [
+                                (
+                                    Constructor {
+                                        name: "Red",
+                                        args: [],
+                                        ty: Color,
+                                    },
+                                    VCon {
+                                        name: "Green",
+                                        ty: Color,
+                                    },
+                                ),
+                                (
+                                    Constructor {
+                                        name: "Green",
+                                        args: [],
+                                        ty: Color,
+                                    },
+                                    VCon {
+                                        name: "Blue",
+                                        ty: Color,
+                                    },
+                                ),
+                                (
+                                    Constructor {
+                                        name: "Blue",
+                                        args: [],
+                                        ty: Color,
+                                    },
+                                    VCon {
+                                        name: "Red",
+                                        ty: Color,
+                                    },
+                                ),
+                            ],
+                            ty: Color,
+                        },
+                    ),
+                    ty: Color,
+                },
+            },
+        ),
+        Fn(
+            Fn {
+                name: "main0",
+                generics: [],
+                params: [],
+                ret_ty: Unit,
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                                ty: Color,
+                            },
+                            ty: Color,
+                            value: VCon {
+                                name: "Red",
+                                ty: Color,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "b",
+                                ty: Color,
+                            },
+                            ty: Color,
+                            value: VCon {
+                                name: "Green",
+                                ty: Color,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "next_a",
+                                ty: Color,
+                            },
+                            ty: Color,
+                            value: Call {
+                                callee: Name {
+                                    name: "next",
+                                    ty: (Color) -> Color,
+                                },
+                                args: [
+                                    Name {
+                                        name: "a",
+                                        ty: Color,
+                                    },
+                                ],
+                                ty: Color,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "next_b",
+                                ty: Color,
+                            },
+                            ty: Color,
+                            value: Call {
+                                callee: Name {
+                                    name: "next",
+                                    ty: (Color) -> Color,
+                                },
+                                args: [
+                                    Name {
+                                        name: "b",
+                                        ty: Color,
+                                    },
+                                ],
+                                ty: Color,
+                            },
+                        },
+                    ],
+                    expr: None,
+                    ty: Unit,
+                },
+            },
+        ),
+    ],
+}

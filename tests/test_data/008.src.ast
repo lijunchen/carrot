@@ -1,0 +1,145 @@
+File {
+    items: [
+        Enum(
+            Enum {
+                name: "Color",
+                generics: [],
+                variants: [
+                    Variant {
+                        name: "Red",
+                        args: [],
+                    },
+                    Variant {
+                        name: "Green",
+                        args: [],
+                    },
+                    Variant {
+                        name: "Blue",
+                        args: [],
+                    },
+                ],
+            },
+        ),
+        Fn(
+            Fn {
+                name: "next",
+                generics: [],
+                params: [
+                    Param {
+                        name: "c",
+                        ty: Name {
+                            name: "Color",
+                        },
+                    },
+                ],
+                ret_ty: Name {
+                    name: "Color",
+                },
+                body: Block {
+                    stmts: [],
+                    expr: Some(
+                        Match {
+                            expr: Name {
+                                name: "c",
+                            },
+                            arms: [
+                                (
+                                    Constructor {
+                                        name: "Red",
+                                        args: [],
+                                    },
+                                    VCon {
+                                        name: "Green",
+                                    },
+                                ),
+                                (
+                                    Constructor {
+                                        name: "Green",
+                                        args: [],
+                                    },
+                                    VCon {
+                                        name: "Blue",
+                                    },
+                                ),
+                                (
+                                    Constructor {
+                                        name: "Blue",
+                                        args: [],
+                                    },
+                                    VCon {
+                                        name: "Red",
+                                    },
+                                ),
+                            ],
+                        },
+                    ),
+                },
+            },
+        ),
+        Fn(
+            Fn {
+                name: "main0",
+                generics: [],
+                params: [],
+                ret_ty: Name {
+                    name: "Unit",
+                },
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                            },
+                            ty: Missing,
+                            value: VCon {
+                                name: "Red",
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "b",
+                            },
+                            ty: Missing,
+                            value: VCon {
+                                name: "Green",
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "next_a",
+                            },
+                            ty: Missing,
+                            value: Call {
+                                f: Name {
+                                    name: "next",
+                                },
+                                args: [
+                                    Name {
+                                        name: "a",
+                                    },
+                                ],
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "next_b",
+                            },
+                            ty: Missing,
+                            value: Call {
+                                f: Name {
+                                    name: "next",
+                                },
+                                args: [
+                                    Name {
+                                        name: "b",
+                                    },
+                                ],
+                            },
+                        },
+                    ],
+                    expr: None,
+                },
+            },
+        ),
+    ],
+}

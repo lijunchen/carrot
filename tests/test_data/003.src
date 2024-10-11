@@ -1,0 +1,22 @@
+enum Option[T] {
+    None,
+    Some(T),
+}
+
+fn main0() -> Unit {
+    let a = Some(1);
+    match a {
+        None => {
+            print("None");
+        },
+        Some(x) => {
+            print(x);
+        },
+    };
+
+    let x = 1;
+    match x {
+        0 => "1",
+        1 => "2",
+    };
+}

@@ -1,0 +1,16 @@
+enum T {
+  A,
+  B(Int),
+  C(Int, Bool),
+  D((Int, Bool), String),
+}
+
+fn main0() -> Unit {
+  let t = B(1);
+  match t {
+    A => 0,
+    B(x) => 1,
+    C(x, y) => 2,
+    D((x, y), z) => 3,
+  }
+}

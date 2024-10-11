@@ -1,0 +1,33 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "main",
+                generics: [],
+                params: [],
+                ret_ty: Unit,
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "x",
+                                ty: Unit,
+                            },
+                            ty: Unit,
+                            value: Unit {
+                                ty: Unit,
+                            },
+                        },
+                    ],
+                    expr: Some(
+                        Name {
+                            name: "x",
+                            ty: Unit,
+                        },
+                    ),
+                    ty: Unit,
+                },
+            },
+        ),
+    ],
+}
