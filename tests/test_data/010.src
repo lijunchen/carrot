@@ -1,0 +1,22 @@
+fn add(x: Int, y: Int) -> Int {
+    int_add(x, y)
+}
+
+fn main() -> Unit {
+    let x = 1;
+    let y = 2;
+    let z = add(x, y);
+    let a = {
+        1;
+        2;
+    };
+    let a = {
+        1; 2; 3
+    };
+    let a = if true {
+        1
+    } else {
+        2
+    };
+
+}

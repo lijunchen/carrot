@@ -1,0 +1,180 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "add",
+                generics: [],
+                params: [
+                    Param {
+                        name: "x",
+                        ty: Name {
+                            name: "Int",
+                        },
+                    },
+                    Param {
+                        name: "y",
+                        ty: Name {
+                            name: "Int",
+                        },
+                    },
+                ],
+                ret_ty: Name {
+                    name: "Int",
+                },
+                body: Block {
+                    stmts: [],
+                    expr: Some(
+                        Call {
+                            f: Name {
+                                name: "int_add",
+                            },
+                            args: [
+                                Name {
+                                    name: "x",
+                                },
+                                Name {
+                                    name: "y",
+                                },
+                            ],
+                        },
+                    ),
+                },
+            },
+        ),
+        Fn(
+            Fn {
+                name: "main",
+                generics: [],
+                params: [],
+                ret_ty: Name {
+                    name: "Unit",
+                },
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "x",
+                            },
+                            ty: Missing,
+                            value: Literal {
+                                value: Int(
+                                    1,
+                                ),
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "y",
+                            },
+                            ty: Missing,
+                            value: Literal {
+                                value: Int(
+                                    2,
+                                ),
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "z",
+                            },
+                            ty: Missing,
+                            value: Call {
+                                f: Name {
+                                    name: "add",
+                                },
+                                args: [
+                                    Name {
+                                        name: "x",
+                                    },
+                                    Name {
+                                        name: "y",
+                                    },
+                                ],
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                            },
+                            ty: Missing,
+                            value: Block {
+                                stmts: [
+                                    ExprStmt {
+                                        expr: Literal {
+                                            value: Int(
+                                                1,
+                                            ),
+                                        },
+                                    },
+                                    ExprStmt {
+                                        expr: Literal {
+                                            value: Int(
+                                                2,
+                                            ),
+                                        },
+                                    },
+                                ],
+                                expr: None,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                            },
+                            ty: Missing,
+                            value: Block {
+                                stmts: [
+                                    ExprStmt {
+                                        expr: Literal {
+                                            value: Int(
+                                                1,
+                                            ),
+                                        },
+                                    },
+                                    ExprStmt {
+                                        expr: Literal {
+                                            value: Int(
+                                                2,
+                                            ),
+                                        },
+                                    },
+                                ],
+                                expr: Some(
+                                    Literal {
+                                        value: Int(
+                                            3,
+                                        ),
+                                    },
+                                ),
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                            },
+                            ty: Missing,
+                            value: If {
+                                cond: Literal {
+                                    value: Bool(
+                                        true,
+                                    ),
+                                },
+                                then: Literal {
+                                    value: Int(
+                                        1,
+                                    ),
+                                },
+                                orelse: Literal {
+                                    value: Int(
+                                        2,
+                                    ),
+                                },
+                            },
+                        },
+                    ],
+                    expr: None,
+                },
+            },
+        ),
+    ],
+}

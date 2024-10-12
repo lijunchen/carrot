@@ -7,6 +7,3 @@ lalrpop_util::lalrpop_mod!(
     #[rustfmt::skip]
     pub grammar
 );
-
-#[cfg(test)]
-mod smoke_test;

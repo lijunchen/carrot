@@ -1,0 +1,181 @@
+File {
+    items: [
+        Fn(
+            Fn {
+                name: "add",
+                generics: [],
+                params: [
+                    Param {
+                        name: "x",
+                        ty: Int,
+                    },
+                    Param {
+                        name: "y",
+                        ty: Int,
+                    },
+                ],
+                ret_ty: Int,
+                body: Block {
+                    stmts: [],
+                    expr: Some(
+                        Call {
+                            callee: Name {
+                                name: "int_add",
+                                ty: (Int, Int) -> Int,
+                            },
+                            args: [
+                                Name {
+                                    name: "x",
+                                    ty: Int,
+                                },
+                                Name {
+                                    name: "y",
+                                    ty: Int,
+                                },
+                            ],
+                            ty: Int,
+                        },
+                    ),
+                    ty: Int,
+                },
+            },
+        ),
+        Fn(
+            Fn {
+                name: "main",
+                generics: [],
+                params: [],
+                ret_ty: Unit,
+                body: Block {
+                    stmts: [
+                        LetStmt {
+                            pat: Ident {
+                                name: "x",
+                                ty: Int,
+                            },
+                            ty: Int,
+                            value: Literal {
+                                value: 1,
+                                ty: Int,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "y",
+                                ty: Int,
+                            },
+                            ty: Int,
+                            value: Literal {
+                                value: 2,
+                                ty: Int,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "z",
+                                ty: Int,
+                            },
+                            ty: Int,
+                            value: Call {
+                                callee: Name {
+                                    name: "add",
+                                    ty: (Int, Int) -> Int,
+                                },
+                                args: [
+                                    Name {
+                                        name: "x",
+                                        ty: Int,
+                                    },
+                                    Name {
+                                        name: "y",
+                                        ty: Int,
+                                    },
+                                ],
+                                ty: Int,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                                ty: Unit,
+                            },
+                            ty: Unit,
+                            value: Block {
+                                stmts: [
+                                    ExprStmt {
+                                        expr: Literal {
+                                            value: 1,
+                                            ty: Int,
+                                        },
+                                    },
+                                    ExprStmt {
+                                        expr: Literal {
+                                            value: 2,
+                                            ty: Int,
+                                        },
+                                    },
+                                ],
+                                expr: None,
+                                ty: Unit,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                                ty: Int,
+                            },
+                            ty: Int,
+                            value: Block {
+                                stmts: [
+                                    ExprStmt {
+                                        expr: Literal {
+                                            value: 1,
+                                            ty: Int,
+                                        },
+                                    },
+                                    ExprStmt {
+                                        expr: Literal {
+                                            value: 2,
+                                            ty: Int,
+                                        },
+                                    },
+                                ],
+                                expr: Some(
+                                    Literal {
+                                        value: 3,
+                                        ty: Int,
+                                    },
+                                ),
+                                ty: Int,
+                            },
+                        },
+                        LetStmt {
+                            pat: Ident {
+                                name: "a",
+                                ty: Int,
+                            },
+                            ty: Int,
+                            value: If {
+                                cond: Literal {
+                                    value: true,
+                                    ty: Bool,
+                                },
+                                then: Literal {
+                                    value: 1,
+                                    ty: Int,
+                                },
+                                orelse: Literal {
+                                    value: 2,
+                                    ty: Int,
+                                },
+                                ty: Int,
+                            },
+                        },
+                    ],
+                    expr: None,
+                    ty: Unit,
+                },
+            },
+        ),
+    ],
+}
